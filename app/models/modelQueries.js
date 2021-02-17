@@ -62,6 +62,15 @@ module.exports = function(){
           connection.query(`select * from professores`, callback);
         }
 
+
+        this.atualizarEscola = function (connection, conteudo, callback){
+          connection.query(`UPDATE escolas SET nome='${conteudo.nome}', email='${conteudo.email}', logradouro'${conteudo.logradouro}', numero=${conteudo.numero},complemento='${conteudo.complemento}',bairro='${conteudo.bairro}', cidade='${conteudo.cidade}', estado='${conteudo.estado}', cep='${conteudo.cep}', telefone='${conteudo.telefone}', telefone_2='${conteudo.telefone2}' where email='${conteudo.email}'`,callback);
+        }
+
+        
+        this.atualizarProfessor = function (connection, conteudo, callback){
+          connection.query(`UPDATE professores SET professores nome='${conteudo.nome}', email='${conteudo.email}') where= email='${conteudo.email}`, callback);
+        }
 /* 
   this.getConteudoFront = function (connection, callback){
     connection.query("select * from conteudo where categoria = 'frontend'", callback);

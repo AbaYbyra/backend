@@ -1,9 +1,8 @@
 const {check, validationResult } = require("express-validator");
  module.exports = function (app){
- app.post('/add_prof',[
+ app.post('/teacher_update',[
   check('nome', 'Nome é Obrigatótio').notEmpty(),
   check('email', 'Email é Obrigatório').notEmpty(),
-  check('senha', 'A senha precisa ter no mínimo 6 digitos').isLength({min:6}),
   check('id_escola', 'Informe o numero da escola').notEmpty(),
 ], function (req, res) {
   let erros = validationResult(req);
@@ -20,10 +19,9 @@ const {check, validationResult } = require("express-validator");
        nome: req.body.nome,
        email: req.body.email,
        senha: req.body.senha,
-       escola: req.body.id_escola
      }
  
-    query.cadastroProfessor(connection, conteudo, function(error, results){ //QUERY 
+    query.atualizarProfessor(connection, conteudo, function(error, results){ //QUERY 
     
       if (error) {
         connection.end(function (err) {
