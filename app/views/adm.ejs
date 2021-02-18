@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpathh.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Abaybyra Admin</title>
+  </head>
+  <body class="bg-dark text-white ">
+
+    <div class="container ">
+    <div class="jumbotron text-lg-center">
+        <center><img with="200" height="200"src="https://i.imgur.com/znMXVTu.png" alt=""> </center> 
+
+        <h1 class="display-4"></h1>
+        <p class="lead">página auxiliar back-end abaybyra</p>
+
+        <p>LISTA (JSON) DE TODAS ESCOLAS/PROFESSORES E FORMULÁRIOS P/ CADASTROS RÁPIDOS</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-small" href="/escolas_all" role="button">Escolas</a>
+          <a class="btn btn-primary btn-small" href="/profs_all" role="button">Professores</a>
+
+          <a class="btn btn-primary btn-small" href="/form_escola" role="button">ADD_escola</a>
+          <a class="btn btn-primary btn-small" href="/form_professor" role="button">ADD_Professor</a>
+        </p>
+
+       
+      </div>
+      <hr class="my-4">
+ <div class="col-sm-5">
+      <table class="table text-white">
+        <thead>
+          <tr>
+            <th scope="col">METHOD</th>
+            <th scope="col">URL</th>
+            <th scope="col">PARAMETROS</th>
+            <th scope="col">Funcionalidade</th>
+          
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">POST</th>
+            <td>/add_escola</td>
+            <td>nome,email,senha,logradouro,numero,bairro,cidade,estado,cep,telefone,telefone2,publica<br>
+            atenção: os nomes dos campos dos inputs são os mesmo citados à cima
+            </td>
+            <td>Adiciona Escola</td> 
+        </tr>
+        <tr>
+            <th scope="row">POST</th>
+            <td>/add_prof</td>
+            <td>nome,email,senha,id_escola(FK)<br>
+                atenção: esta rota recebe POST</td>
+            <td>Adiciona Professor 
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">GET</th>
+            <td>/add_prof2</td>
+            <td>nome,email,senha,id_escola(FK)<br>
+                exemplo: linksite.com/add_prof2/joaoclaudio/joao@gmail.com/senha_joao/1</td>
+            <td>add o professor e retorna true/1 se adicionado sucesso
+            </td>
+          </tr>
+      
+          <tr>
+            <th scope="row">GET</th>
+            <td>/teacher_profile</td>
+            <td>email/senha/id_escola             <br>
+                exemplo: linksite.com/teacher_profile/prof@email/senha_prof/id_escola <br>
+                (foram mts parametros vai ser refaturado em breve)
+            </td>
+            <td>Retorna dados pessoais do professor </td>
+          </tr>
+
+          <tr>
+            <th scope="row">GET</th>
+            <td>/escola_profile</td>
+            <td>email/senha              <br>
+                exemplo: linksite.com/escola_profile/escola@email/senha_escola</td>
+            <td>Retorna dados pessoais da escola</td>
+          </tr>
+
+          <tr>
+            <th scope="row">GET</th>
+            <td>/professores</td>
+            <td>id_escola             <br>
+                exemplo: linksite.com/professores/1</td>
+            <td>Retorna todos professores cadastrados com o id da escola</td>
+          </tr>
+
+
+          <tr>
+            <th scope="row">GET</th>
+            <td>/escola_id</td>
+            <td>email/senha              <br>
+                exemplo: linksite.com/escola_id/escola@email/senha_escola<br>
+                obs: rota de ferramenta caso precise retornar somente o id
+            </td>
+            <td>Retorna somente o ID da escola</td>
+          </tr>
+          <tr>
+            <th scope="row">GET</th>
+            <td>/auth</td>
+            <td>email/senha <br> exemplo:
+                sitelink.com/auth/recode@gmail.com/senha_recode
+                <br>
+            OBS: rota responsável por capturar login e tipo de usuário
+            </td>
+            <td>Retorna JSON se o usuario existir no banco retorna 1</td>
+          </tr>
+        
+          <tr>
+            <th scope="row">GET</th>
+            <td>/delete_prof</td>
+            <td>id_escola/id_professor
+                <br>
+                exemplo: linksite.com/delete_prof/1/5
+
+            </td>
+            <td>Adiciona Professor retorna true/1 se deletado</td>
+          </tr>
+
+          <tr>
+            <th scope="row">?</th>
+            <td>/update_professor</td>
+            <td>[dados] OBS: em andamento</td>
+            <td>Atualiza dados do professor</td>
+          </tr>
+
+          <tr>
+            <th scope="row">?</th>
+            <td>/update_escola</td>
+            <td>[dados] OBS: em andamento</td>
+            <td>Atualiza dados da escola</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
